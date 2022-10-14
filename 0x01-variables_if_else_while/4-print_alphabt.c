@@ -3,8 +3,9 @@
 /**
  * main - Prints the alphabet in lowercase, except for q and e.
  *
- * retun: Always 0
+ * return: Always 0.
  */
+
 int main(void)
 {
 	char letter;
@@ -15,7 +16,7 @@ int main(void)
 		putchar(letter);
 	}
 
-	print('\n');
+	putchar('\n');
 
 	return (0);
 }
