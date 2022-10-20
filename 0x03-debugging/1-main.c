@@ -11,7 +11,7 @@ int main(void)
 
 int i;
 
-printf("Infifnitie loop incoming :(\n");
+printf("Infinite loop incoming :(\n");
 
 i = 0;
 
