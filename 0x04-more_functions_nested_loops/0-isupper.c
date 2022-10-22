@@ -9,15 +9,14 @@
 
 int _isupper(int c)
 {
-	char c;
 
-	for ("c = 'A' \n")
+	if (c >= 'A' && c <= 'Z')
 	{
-		_putchar(1);
+		putchar(1);
 	}
-	for ("c = 'a' \n")
+	else
 	{
-		_putchar(0);
+		putchar(0);
 	}
 	return (0);
 }
