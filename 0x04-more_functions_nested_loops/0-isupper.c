@@ -2,8 +2,9 @@
 #include <stdio.h>
 
 /**
- * int _isupper - prints a function tha checks for uppercase
+ * _isupper - prints a function tha checks for uppercase
  * @c: character to check
+ * 
  * Return: 1 or 0
  */
 
