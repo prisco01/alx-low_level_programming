@@ -4,18 +4,23 @@
 /**
  * _isupper - prints a function tha checks for uppercase
  * @c: character to check
- * 
+ *
  * Return: 1 or 0
  */
 
 int _isupper(int c)
 {
+	char uppercase = 'A';
 
-	if (c >= 'A' && c <= 'Z')
-	
-		return(1);
-	
-	else
+	int isupper = 0;
 
-		return (0);
+	for (uppercase = 'Z'; uppercase++);
+	{
+	if (c == uppercase)
+	{
+	isupper = 1;
+	break;
+	}
+	}
+	return (isupper);
 }
