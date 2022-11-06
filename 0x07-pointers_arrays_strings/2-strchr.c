@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stddef.h>
 /**
 * _strchr - located a character in a string
 * @c: occurence of the character
