@@ -1,39 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-/**
-* main - add postive number
-* @agrc: number of command line arguments.
-* @argv: arrya that contains the program comman line arguments.
-* Return: Always 0
-*/
-int main(int argc, char *argv[])
-{
-	int result = 0, num, i, j, k;
 
-	for (i = 1; i < argc; i++)
+/**
+ * main - adds positive numbers.
+ * @argc: argument count
+ * @argv: arguments
+ *
+ * Return: 0
+ */
+int main(int argc, char **argv)
+{
+	int i, n, sum = 0;
+	char *flag;
+
+	if (argc < 2)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		printf("0\n");
+		return (0);
+	}
+
+	for (i = 1; argv[i]; i++)
+	{
+		n = strtol(argv[i], &flag, 10);
+		if (*flag)
 		{
-			if (argv[i][j] > '9' || argv[i][j] < '0')
-			{
-			printf("%s\n", "Error");
+			printf("Error\n");
 			return (1);
-			}
+		}
+		else
+		{
+			sum += n;
 		}
 	}
+	printf("%d\n", sum);
 
-	for (k = 1; k < argc; k++)
-	{
-		num = atoi(argv[k]);
-		result += num;
-	}
-	printf("%d\n", result);
-	return (0);
-}
-
-	add += atoi(argv[i]);
-	}
-	printf("%d\n", add);
 	return (0);
 }
