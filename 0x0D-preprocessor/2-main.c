@@ -5,9 +5,8 @@
 *
 * Return - Always 0
 */
-int main(void)
+void main(void)
 {
 	printf("%s\n", __FILE__);
 	return (0);
 }
-
