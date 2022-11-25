@@ -1,0 +1,651 @@
+
+;; Function print_list (print_list, funcdef_no=6, decl_uid=3010, cgraph_uid=7, symbol_order=6)
+
+print_list (const struct list_t * h)
+{
+  int count;
+  size_t D.3032;
+  char * _1;
+  char * _2;
+  unsigned int _3;
+  size_t _11;
+
+;;   basic block 2, loop depth 0
+;;    pred:       ENTRY
+  count_8 = 0;
+  goto <bb 7>; [INV]
+;;    succ:       7
+
+;;   basic block 3, loop depth 1
+;;    pred:       7
+  _1 = h_4->str;
+  if (_1 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+;;    succ:       4
+;;                5
+
+;;   basic block 4, loop depth 1
+;;    pred:       3
+  printf ("[%d] %s\n", 0, "(nil)");
+  goto <bb 6>; [INV]
+;;    succ:       6
+
+;;   basic block 5, loop depth 1
+;;    pred:       3
+  _2 = h_4->str;
+  _3 = h_4->len;
+  printf ("[%d] %s\n", _3, _2);
+;;    succ:       6
+
+;;   basic block 6, loop depth 1
+;;    pred:       4
+;;                5
+  count_14 = count_5 + 1;
+  h_15 = h_4->next;
+;;    succ:       7
+
+;;   basic block 7, loop depth 1
+;;    pred:       2
+;;                6
+  # h_4 = PHI <h_9(D)(2), h_15(6)>
+  # count_5 = PHI <count_8(2), count_14(6)>
+  if (h_4 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+;;    succ:       3
+;;                8
+
+;;   basic block 8, loop depth 0
+;;    pred:       7
+  _11 = (size_t) count_5;
+;;    succ:       9
+
+;;   basic block 9, loop depth 0
+;;    pred:       8
+<L6>:
+  return _11;
+;;    succ:       EXIT
+
+}
+
+
+
+Partition map 
+
+Partition 1 (_1 - 1 )
+Partition 2 (_2 - 2 )
+Partition 3 (_3 - 3 )
+Partition 4 (h_4 - 4 )
+Partition 5 (count_5 - 5 )
+Partition 8 (count_8 - 8 )
+Partition 9 (h_9(D) - 9 )
+Partition 11 (_11 - 11 )
+Partition 14 (count_14 - 14 )
+Partition 15 (h_15 - 15 )
+Partition 16 (_16(D) - 16 )
+
+
+Coalescible Partition map 
+
+Partition 0, base 0 (h_4 - 4 9 15 )
+Partition 1, base 1 (count_5 - 5 8 14 )
+Partition 6, base 2 (_16(D) - 16 )
+
+
+Partition map 
+
+Partition 0 (h_4 - 4 )
+Partition 1 (count_5 - 5 )
+Partition 2 (count_8 - 8 )
+Partition 3 (h_9(D) - 9 )
+Partition 4 (count_14 - 14 )
+Partition 5 (h_15 - 15 )
+Partition 6 (_16(D) - 16 )
+
+
+Conflict graph:
+
+After sorting:
+Sorted Coalesce list:
+(2147483647, 0) h_4 <-> h_9(D)
+(2147483647, 0) h_4 <-> h_15
+(2147483646, 0) count_5 <-> count_8
+(2147483646, 0) count_5 <-> count_14
+
+Partition map 
+
+Partition 0 (h_4 - 4 )
+Partition 1 (count_5 - 5 )
+Partition 2 (count_8 - 8 )
+Partition 3 (h_9(D) - 9 )
+Partition 4 (count_14 - 14 )
+Partition 5 (h_15 - 15 )
+Partition 6 (_16(D) - 16 )
+
+Coalesce list: (4)h_4 & (9)h_9(D) [map: 0, 3] : Success -> 0
+Coalesce list: (4)h_4 & (15)h_15 [map: 0, 5] : Success -> 0
+Coalesce list: (5)count_5 & (8)count_8 [map: 1, 2] : Success -> 1
+Coalesce list: (5)count_5 & (14)count_14 [map: 1, 4] : Success -> 1
+After Coalescing:
+
+Partition map 
+
+Partition 0 (_1 - 1 )
+Partition 1 (_2 - 2 )
+Partition 2 (_3 - 3 )
+Partition 3 (h_4 - 4 9 15 )
+Partition 4 (count_5 - 5 8 14 )
+Partition 5 (_11 - 11 )
+Partition 6 (_16(D) - 16 )
+
+print_list (const struct list_t * h)
+{
+  int count;
+  size_t D.3032;
+  char * _1;
+  char * _2;
+  unsigned int _3;
+  size_t _11;
+
+;;   basic block 2, loop depth 0
+;;    pred:       ENTRY
+  count_8 = 0;
+  goto <bb 7>; [INV]
+;;    succ:       7
+
+;;   basic block 3, loop depth 1
+;;    pred:       7
+  _1 = h_4->str;
+  if (_1 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+;;    succ:       4
+;;                5
+
+;;   basic block 4, loop depth 1
+;;    pred:       3
+  printf ("[%d] %s\n", 0, "(nil)");
+  goto <bb 6>; [INV]
+;;    succ:       6
+
+;;   basic block 5, loop depth 1
+;;    pred:       3
+  _2 = h_4->str;
+  _3 = h_4->len;
+  printf ("[%d] %s\n", _3, _2);
+;;    succ:       6
+
+;;   basic block 6, loop depth 1
+;;    pred:       4
+;;                5
+  count_14 = count_5 + 1;
+  h_15 = h_4->next;
+;;    succ:       7
+
+;;   basic block 7, loop depth 1
+;;    pred:       2
+;;                6
+  # h_4 = PHI <h_9(D)(2), h_15(6)>
+  # count_5 = PHI <count_8(2), count_14(6)>
+  if (h_4 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+;;    succ:       3
+;;                8
+
+;;   basic block 8, loop depth 0
+;;    pred:       7
+  _11 = (size_t) count_5;
+;;    succ:       9
+
+;;   basic block 9, loop depth 0
+;;    pred:       8
+<L6>:
+  return _11;
+;;    succ:       EXIT
+
+}
+
+
+Partition 0: size 4 align 4
+	count_5
+
+;; Generating RTL for gimple basic block 2
+
+;; count_8 = 0;
+
+(insn 6 5 0 (set (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -4 [0xfffffffffffffffc])) [1 count+0 S4 A32])
+        (const_int 0 [0])) "0-print_list.c":14:6 -1
+     (nil))
+
+;; Generating RTL for gimple basic block 3
+
+;; _1 = h_4->str;
+
+(insn 10 9 11 (set (reg/f:DI 87)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])) "0-print_list.c":18:8 -1
+     (nil))
+
+(insn 11 10 0 (set (reg/f:DI 82 [ _1 ])
+        (mem/f:DI (reg/f:DI 87) [4 h_4->str+0 S8 A64])) "0-print_list.c":18:8 -1
+     (nil))
+
+;; if (_1 == 0B)
+
+(insn 12 11 13 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/f:DI 82 [ _1 ])
+            (const_int 0 [0]))) "0-print_list.c":18:6 -1
+     (nil))
+
+(jump_insn 13 12 0 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 0)
+            (pc))) "0-print_list.c":18:6 -1
+     (nil))
+
+;; Generating RTL for gimple basic block 4
+
+;; printf ("[%d] %s\n", 0, "(nil)");
+
+(insn 15 14 16 (set (reg:DI 1 dx)
+        (symbol_ref/f:DI ("*.LC0") [flags 0x2]  <var_decl 0x7f7bfdb3d090 *.LC0>)) "0-print_list.c":20:4 -1
+     (nil))
+
+(insn 16 15 17 (set (reg:SI 4 si)
+        (const_int 0 [0])) "0-print_list.c":20:4 -1
+     (nil))
+
+(insn 17 16 18 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7f7bfdb3d120 *.LC1>)) "0-print_list.c":20:4 -1
+     (nil))
+
+(insn 18 17 19 (set (reg:QI 0 ax)
+        (const_int 0 [0])) "0-print_list.c":20:4 -1
+     (nil))
+
+(call_insn 19 18 0 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("printf") [flags 0x41]  <function_decl 0x7f7bfda00a00 printf>) [0 __builtin_printf S1 A8])
+            (const_int 0 [0]))) "0-print_list.c":20:4 -1
+     (nil)
+    (expr_list (use (reg:QI 0 ax))
+        (expr_list:DI (use (reg:DI 5 di))
+            (expr_list:SI (use (reg:SI 4 si))
+                (expr_list:DI (use (reg:DI 1 dx))
+                    (nil))))))
+
+;; Generating RTL for gimple basic block 5
+
+;; 
+
+(code_label 22 21 23 3 (nil) [0 uses])
+
+(note 23 22 0 NOTE_INSN_BASIC_BLOCK)
+
+;; _2 = h_4->str;
+
+(insn 24 23 25 (set (reg/f:DI 88)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])) "0-print_list.c":24:3 -1
+     (nil))
+
+(insn 25 24 0 (set (reg/f:DI 83 [ _2 ])
+        (mem/f:DI (reg/f:DI 88) [4 h_4->str+0 S8 A64])) "0-print_list.c":24:3 -1
+     (nil))
+
+;; _3 = h_4->len;
+
+(insn 26 25 27 (set (reg/f:DI 89)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])) "0-print_list.c":24:3 -1
+     (nil))
+
+(insn 27 26 0 (set (reg:SI 84 [ _3 ])
+        (mem:SI (plus:DI (reg/f:DI 89)
+                (const_int 8 [0x8])) [1 h_4->len+0 S4 A64])) "0-print_list.c":24:3 -1
+     (nil))
+
+;; printf ("[%d] %s\n", _3, _2);
+
+(insn 28 27 29 (set (reg:DI 1 dx)
+        (reg/f:DI 83 [ _2 ])) "0-print_list.c":24:3 -1
+     (nil))
+
+(insn 29 28 30 (set (reg:SI 4 si)
+        (reg:SI 84 [ _3 ])) "0-print_list.c":24:3 -1
+     (nil))
+
+(insn 30 29 31 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7f7bfdb3d120 *.LC1>)) "0-print_list.c":24:3 -1
+     (nil))
+
+(insn 31 30 32 (set (reg:QI 0 ax)
+        (const_int 0 [0])) "0-print_list.c":24:3 -1
+     (nil))
+
+(call_insn 32 31 0 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("printf") [flags 0x41]  <function_decl 0x7f7bfda00a00 printf>) [0 __builtin_printf S1 A8])
+            (const_int 0 [0]))) "0-print_list.c":24:3 -1
+     (nil)
+    (expr_list (use (reg:QI 0 ax))
+        (expr_list:DI (use (reg:DI 5 di))
+            (expr_list:SI (use (reg:SI 4 si))
+                (expr_list:DI (use (reg:DI 1 dx))
+                    (nil))))))
+
+;; Generating RTL for gimple basic block 6
+
+;; 
+
+(code_label 33 32 34 4 (nil) [0 uses])
+
+(note 34 33 0 NOTE_INSN_BASIC_BLOCK)
+
+;; count_14 = count_5 + 1;
+
+(insn 35 34 0 (parallel [
+            (set (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                        (const_int -4 [0xfffffffffffffffc])) [1 count+0 S4 A32])
+                (plus:SI (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                            (const_int -4 [0xfffffffffffffffc])) [1 count+0 S4 A32])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) "0-print_list.c":26:8 -1
+     (nil))
+
+;; h_15 = h_4->next;
+
+(insn 36 35 37 (set (reg/f:DI 90)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])) "0-print_list.c":27:5 -1
+     (nil))
+
+(insn 37 36 38 (set (reg/f:DI 91)
+        (mem/f:DI (plus:DI (reg/f:DI 90)
+                (const_int 16 [0x10])) [2 h_4->next+0 S8 A64])) "0-print_list.c":27:5 -1
+     (nil))
+
+(insn 38 37 0 (set (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])
+        (reg/f:DI 91)) "0-print_list.c":27:5 -1
+     (nil))
+
+;; Generating RTL for gimple basic block 7
+
+;; 
+
+(code_label 39 38 40 2 (nil) [0 uses])
+
+(note 40 39 0 NOTE_INSN_BASIC_BLOCK)
+
+;; if (h_4 != 0B)
+
+(insn 42 40 43 (set (reg:CCZ 17 flags)
+        (compare:CCZ (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                    (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])
+            (const_int 0 [0]))) "0-print_list.c":16:8 -1
+     (nil))
+
+(jump_insn 43 42 0 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 41)
+            (pc))) "0-print_list.c":16:8 -1
+     (nil))
+
+;; Generating RTL for gimple basic block 8
+
+;; _11 = (size_t) count_5;
+
+(insn 45 44 46 (set (reg:SI 92)
+        (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -4 [0xfffffffffffffffc])) [1 count+0 S4 A32])) "0-print_list.c":29:9 -1
+     (nil))
+
+(insn 46 45 0 (set (reg:DI 85 [ _11 ])
+        (sign_extend:DI (reg:SI 92))) "0-print_list.c":29:9 -1
+     (nil))
+
+;; Generating RTL for gimple basic block 9
+
+;; <L6>:
+
+(code_label 47 46 48 6 (nil) [0 uses])
+
+(note 48 47 0 NOTE_INSN_BASIC_BLOCK)
+
+;; return _11;
+
+(insn 49 48 50 (set (reg:DI 86 [ <retval> ])
+        (reg:DI 85 [ _11 ])) "0-print_list.c":29:9 -1
+     (nil))
+
+(jump_insn 50 49 51 (set (pc)
+        (label_ref 0)) "0-print_list.c":29:9 -1
+     (nil))
+
+(barrier 51 50 0)
+
+
+try_optimize_cfg iteration 1
+
+Merging block 3 into block 2...
+Merged blocks 2 and 3.
+Merged 2 and 3 without moving.
+Merging block 10 into block 9...
+Merged blocks 9 and 10.
+Merged 9 and 10 without moving.
+Removing jump 50.
+Merging block 11 into block 9...
+Merged blocks 9 and 11.
+Merged 9 and 11 without moving.
+
+
+try_optimize_cfg iteration 2
+
+fix_loop_structure: fixing up loops for function
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 4 NOTE_INSN_DELETED)
+;; basic block 2, loop depth 0, maybe hot
+;;  prev block 0, next block 4, flags: (NEW, REACHABLE, RTL)
+;;  pred:       ENTRY (FALLTHRU)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn 2 4 3 2 (set (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])
+        (reg:DI 5 di [ h ])) "0-print_list.c":13:1 -1
+     (nil))
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+(insn 6 3 7 2 (set (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -4 [0xfffffffffffffffc])) [1 count+0 S4 A32])
+        (const_int 0 [0])) "0-print_list.c":14:6 -1
+     (nil))
+(jump_insn 7 6 8 2 (set (pc)
+        (label_ref 39)) "0-print_list.c":16:8 -1
+     (nil)
+ -> 39)
+;;  succ:       8
+
+(barrier 8 7 41)
+;; basic block 4, loop depth 1, maybe hot
+;;  prev block 2, next block 5, flags: (NEW, REACHABLE, RTL)
+;;  pred:       8
+(code_label 41 8 9 4 5 (nil) [1 uses])
+(note 9 41 10 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+(insn 10 9 11 4 (set (reg/f:DI 87)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])) "0-print_list.c":18:8 -1
+     (nil))
+(insn 11 10 12 4 (set (reg/f:DI 82 [ _1 ])
+        (mem/f:DI (reg/f:DI 87) [4 h_4->str+0 S8 A64])) "0-print_list.c":18:8 -1
+     (nil))
+(insn 12 11 13 4 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/f:DI 82 [ _1 ])
+            (const_int 0 [0]))) "0-print_list.c":18:6 -1
+     (nil))
+(jump_insn 13 12 14 4 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 22)
+            (pc))) "0-print_list.c":18:6 -1
+     (nil)
+ -> 22)
+;;  succ:       5 (FALLTHRU)
+;;              6
+
+;; basic block 5, loop depth 1, maybe hot
+;;  prev block 4, next block 6, flags: (NEW, REACHABLE, RTL)
+;;  pred:       4 (FALLTHRU)
+(note 14 13 15 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+(insn 15 14 16 5 (set (reg:DI 1 dx)
+        (symbol_ref/f:DI ("*.LC0") [flags 0x2]  <var_decl 0x7f7bfdb3d090 *.LC0>)) "0-print_list.c":20:4 -1
+     (nil))
+(insn 16 15 17 5 (set (reg:SI 4 si)
+        (const_int 0 [0])) "0-print_list.c":20:4 -1
+     (nil))
+(insn 17 16 18 5 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7f7bfdb3d120 *.LC1>)) "0-print_list.c":20:4 -1
+     (nil))
+(insn 18 17 19 5 (set (reg:QI 0 ax)
+        (const_int 0 [0])) "0-print_list.c":20:4 -1
+     (nil))
+(call_insn 19 18 20 5 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("printf") [flags 0x41]  <function_decl 0x7f7bfda00a00 printf>) [0 __builtin_printf S1 A8])
+            (const_int 0 [0]))) "0-print_list.c":20:4 -1
+     (nil)
+    (expr_list (use (reg:QI 0 ax))
+        (expr_list:DI (use (reg:DI 5 di))
+            (expr_list:SI (use (reg:SI 4 si))
+                (expr_list:DI (use (reg:DI 1 dx))
+                    (nil))))))
+(jump_insn 20 19 21 5 (set (pc)
+        (label_ref 33)) -1
+     (nil)
+ -> 33)
+;;  succ:       7
+
+(barrier 21 20 22)
+;; basic block 6, loop depth 1, maybe hot
+;;  prev block 5, next block 7, flags: (NEW, REACHABLE, RTL)
+;;  pred:       4
+(code_label 22 21 23 6 3 (nil) [1 uses])
+(note 23 22 24 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+(insn 24 23 25 6 (set (reg/f:DI 88)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])) "0-print_list.c":24:3 -1
+     (nil))
+(insn 25 24 26 6 (set (reg/f:DI 83 [ _2 ])
+        (mem/f:DI (reg/f:DI 88) [4 h_4->str+0 S8 A64])) "0-print_list.c":24:3 -1
+     (nil))
+(insn 26 25 27 6 (set (reg/f:DI 89)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])) "0-print_list.c":24:3 -1
+     (nil))
+(insn 27 26 28 6 (set (reg:SI 84 [ _3 ])
+        (mem:SI (plus:DI (reg/f:DI 89)
+                (const_int 8 [0x8])) [1 h_4->len+0 S4 A64])) "0-print_list.c":24:3 -1
+     (nil))
+(insn 28 27 29 6 (set (reg:DI 1 dx)
+        (reg/f:DI 83 [ _2 ])) "0-print_list.c":24:3 -1
+     (nil))
+(insn 29 28 30 6 (set (reg:SI 4 si)
+        (reg:SI 84 [ _3 ])) "0-print_list.c":24:3 -1
+     (nil))
+(insn 30 29 31 6 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7f7bfdb3d120 *.LC1>)) "0-print_list.c":24:3 -1
+     (nil))
+(insn 31 30 32 6 (set (reg:QI 0 ax)
+        (const_int 0 [0])) "0-print_list.c":24:3 -1
+     (nil))
+(call_insn 32 31 33 6 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("printf") [flags 0x41]  <function_decl 0x7f7bfda00a00 printf>) [0 __builtin_printf S1 A8])
+            (const_int 0 [0]))) "0-print_list.c":24:3 -1
+     (nil)
+    (expr_list (use (reg:QI 0 ax))
+        (expr_list:DI (use (reg:DI 5 di))
+            (expr_list:SI (use (reg:SI 4 si))
+                (expr_list:DI (use (reg:DI 1 dx))
+                    (nil))))))
+;;  succ:       7 (FALLTHRU)
+
+;; basic block 7, loop depth 1, maybe hot
+;;  prev block 6, next block 8, flags: (NEW, REACHABLE, RTL)
+;;  pred:       5
+;;              6 (FALLTHRU)
+(code_label 33 32 34 7 4 (nil) [1 uses])
+(note 34 33 35 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+(insn 35 34 36 7 (parallel [
+            (set (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                        (const_int -4 [0xfffffffffffffffc])) [1 count+0 S4 A32])
+                (plus:SI (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                            (const_int -4 [0xfffffffffffffffc])) [1 count+0 S4 A32])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) "0-print_list.c":26:8 -1
+     (nil))
+(insn 36 35 37 7 (set (reg/f:DI 90)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])) "0-print_list.c":27:5 -1
+     (nil))
+(insn 37 36 38 7 (set (reg/f:DI 91)
+        (mem/f:DI (plus:DI (reg/f:DI 90)
+                (const_int 16 [0x10])) [2 h_4->next+0 S8 A64])) "0-print_list.c":27:5 -1
+     (nil))
+(insn 38 37 39 7 (set (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])
+        (reg/f:DI 91)) "0-print_list.c":27:5 -1
+     (nil))
+;;  succ:       8 (FALLTHRU,DFS_BACK)
+
+;; basic block 8, loop depth 1, maybe hot
+;;  prev block 7, next block 9, flags: (NEW, REACHABLE, RTL)
+;;  pred:       2
+;;              7 (FALLTHRU,DFS_BACK)
+(code_label 39 38 40 8 2 (nil) [1 uses])
+(note 40 39 42 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+(insn 42 40 43 8 (set (reg:CCZ 17 flags)
+        (compare:CCZ (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                    (const_int -24 [0xffffffffffffffe8])) [2 h+0 S8 A64])
+            (const_int 0 [0]))) "0-print_list.c":16:8 -1
+     (nil))
+(jump_insn 43 42 44 8 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 41)
+            (pc))) "0-print_list.c":16:8 -1
+     (nil)
+ -> 41)
+;;  succ:       4
+;;              9 (FALLTHRU)
+
+;; basic block 9, loop depth 0, maybe hot
+;;  prev block 8, next block 1, flags: (NEW, REACHABLE, RTL)
+;;  pred:       8 (FALLTHRU)
+(note 44 43 45 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+(insn 45 44 46 9 (set (reg:SI 92)
+        (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -4 [0xfffffffffffffffc])) [1 count+0 S4 A32])) "0-print_list.c":29:9 -1
+     (nil))
+(insn 46 45 49 9 (set (reg:DI 85 [ _11 ])
+        (sign_extend:DI (reg:SI 92))) "0-print_list.c":29:9 -1
+     (nil))
+(insn 49 46 53 9 (set (reg:DI 86 [ <retval> ])
+        (reg:DI 85 [ _11 ])) "0-print_list.c":29:9 -1
+     (nil))
+(insn 53 49 54 9 (set (reg/i:DI 0 ax)
+        (reg:DI 86 [ <retval> ])) "0-print_list.c":30:1 -1
+     (nil))
+(insn 54 53 0 9 (use (reg/i:DI 0 ax)) "0-print_list.c":30:1 -1
+     (nil))
+;;  succ:       EXIT [always]  (FALLTHRU)
+
